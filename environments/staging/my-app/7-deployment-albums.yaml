@@ -33,10 +33,10 @@ spec:
                   key: config-server-url
           resources:
             requests:
-              memory: "64Mi"
+              memory: "128Mi"
               cpu: "250m"
             limits:
-              memory: "128Mi"
+              memory: "256Mi"
               cpu: "500m"
 ---
 kind: Service
