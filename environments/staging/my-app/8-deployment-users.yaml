@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-deploy
+  namespace: staging
+  labels:
+    name: users
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users
+  template:
+    metadata:
+      labels:
+        app: users
+    spec:
+      containers:
+        - image: pblgllgs/user-service-j17-sb3:0.0.2
+          name: users
+          ports:
+            - containerPort: 8083
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  users
+spec:
+  selector:
+    app:  users
+  type:  NodePort
+  ports:
+  - port:  8083
+    targetPort:  32003

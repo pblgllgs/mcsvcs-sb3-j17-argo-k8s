@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: account-management-deploy
+  name: albums-deploy
   namespace: staging
   labels:
-    name: account-management
+    name: albums
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: account-management
+      app: albums
   template:
     metadata:
       labels:
-        app: account-management
+        app: albums
     spec:
       containers:
-        - image: pblgllgs/account-management-service-j17-sb3:0.0.2
-          name: account-management
+        - image: pblgllgs/albums-service-j17-sb3:0.0.2
+          name: albums
           ports:
-            - containerPort: 8082
+            - containerPort: 8081
           resources:
             requests:
               memory: "64Mi"
@@ -27,3 +27,15 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  albums
+spec:
+  selector:
+    app:  albums
+  type:  NodePort
+  ports:
+  - port:  8081
+    targetPort:  32001
