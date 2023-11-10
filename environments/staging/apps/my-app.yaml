@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/pblgllgs/argocd-tutorial.git
+    repoURL: https://github.com/pblgllgs/mcsvcs-sb3-j17-argo-k8s
     targetRevision: HEAD
     path: environments/staging/my-app
   destination:
