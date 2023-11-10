@@ -24,11 +24,11 @@ spec:
                 secretKeyRef:
                   name: token-secret
                   key: token
-            - name: SPRING_RABBITMQ_HOST
+            - name: SPRING_RABBITMQ_ADDRESSES
               valueFrom:
                 configMapKeyRef:
                   name: configmap-properties
-                  key: spring-rabbitmq-host
+                  key: spring-rabbitmq-addresses
             - name: SPRING_RABBITMQ_PASSWORD
               valueFrom:
                 configMapKeyRef:
