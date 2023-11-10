@@ -18,6 +18,19 @@ spec:
       containers:
         - image: pblgllgs/config-server-j17-sb3:0.0.2
           name: config-server
+          env:
+            - name: GITHUB_TOKEN
+              value: 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
+            - name: SPRING_RABBITMQ_HOST
+              value: rabbitmq
+            - name: SPRING_RABBITMQ_PORT
+              value: "5672"
+            - name: SPRING_RABBITMQ_PASSWORD
+              value: guest
+            - name: SPRING_RABBITMQ_USERNAME
+              value: guest
+            - name:  GITHUB_TOKEN
+              value: '*'
           ports:
             - containerPort: 8888
           resources:
