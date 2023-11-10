@@ -16,7 +16,7 @@ spec:
         app: config-server
     spec:
       containers:
-        - image: pblgllgs/config-server-j17-sb3:0.0.2
+        - image: pblgllgs/config-server-j17-sb3:0.0.3
           name: config-server
           env:
             - name: GITHUB_TOKEN
@@ -62,7 +62,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  config-server-service
+  name:  config-server
   namespace: staging
 spec:
   selector:

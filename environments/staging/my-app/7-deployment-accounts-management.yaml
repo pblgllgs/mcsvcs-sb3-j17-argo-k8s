@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: account-management-deploy
+  name: account-ws-deploy
   namespace: staging
   labels:
-    name: account-management
+    name: account-ws
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: account-management
+      app: account-ws
   template:
     metadata:
       labels:
-        app: account-management
+        app: account-ws
     spec:
       containers:
-        - image: pblgllgs/account-management-service-j17-sb3:0.0.2
-          name: account-management
+        - image: pblgllgs/account-management-service-j17-sb3:0.0.3
+          name: account-ws
           ports:
             - containerPort: 8082
           env:
@@ -42,11 +42,11 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  account-management-service
+  name:  account-ws
   namespace: staging
 spec:
   selector:
-    app:  account-management
+    app:  account-ws
   type:  NodePort
   ports:
   - port:  8082
