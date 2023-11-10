@@ -2,6 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: configmap_properties
+  namespace: staging
 data:
   SPRING_RABBITMQ_HOST: rabbitmq
   SPRING_RABBITMQ_PORT: "5672"
