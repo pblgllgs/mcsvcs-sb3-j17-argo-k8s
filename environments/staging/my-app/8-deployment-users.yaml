@@ -20,6 +20,17 @@ spec:
           name: users
           ports:
             - containerPort: 8083
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: USERS_SERVICE_ENVIRONMENT
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: CONFIG_SERVER_URL
           resources:
             requests:
               memory: "64Mi"

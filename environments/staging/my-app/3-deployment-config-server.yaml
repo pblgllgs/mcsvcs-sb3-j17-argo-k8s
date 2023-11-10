@@ -20,17 +20,35 @@ spec:
           name: config-server
           env:
             - name: GITHUB_TOKEN
-              value: 123
+              valueFrom:
+                secretKeyRef:
+                  name: token_secret
+                  key: token
             - name: SPRING_RABBITMQ_HOST
-              value: rabbitmq
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: SPRING_RABBITMQ_HOST
             - name: SPRING_RABBITMQ_PORT
-              value: "5672"
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: SPRING_RABBITMQ_PORT
             - name: SPRING_RABBITMQ_PASSWORD
-              value: guest
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: SPRING_RABBITMQ_PASSWORD
             - name: SPRING_RABBITMQ_USERNAME
-              value: guest
-            - name:  GITHUB_TOKEN
-              value: '*'
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: SPRING_RABBITMQ_USERNAME
+            - name:  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
           ports:
             - containerPort: 8888
           resources:

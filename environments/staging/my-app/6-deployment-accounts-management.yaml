@@ -20,6 +20,17 @@ spec:
           name: account-management
           ports:
             - containerPort: 8082
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: DISCOVERY_SERVICE_ENVIRONMENT
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap_properties
+                  key: CONFIG_SERVER_URL
           resources:
             requests:
               memory: "64Mi"
