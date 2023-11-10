@@ -11,7 +11,6 @@ data:
   management-endpoints-web-exposure-include: "*"
 
   api-gateway-environment: docker
-  discovery-service-environment: docker
   albums-service-environment: docker
   accounts-management-service-environment: k8s
   users-service-environment: docker
