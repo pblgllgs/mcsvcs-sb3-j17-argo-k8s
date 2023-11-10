@@ -25,12 +25,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: configmap_properties
-                  key: ALBUMS_SERVICE_ENVIRONMENT
+                  key: albums-service-environment
             - name: SPRING_CONFIG_IMPORT
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: CONFIG_SERVER_URL
+                  name: configmap-properties
+                  key: config-server-url
           resources:
             requests:
               memory: "64Mi"

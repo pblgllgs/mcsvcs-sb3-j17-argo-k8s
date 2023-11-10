@@ -19,36 +19,36 @@ spec:
         - image: pblgllgs/config-server-j17-sb3:0.0.2
           name: config-server
           env:
-            - name: GITHUB_TOKEN
+            - name: github-token
               valueFrom:
                 secretKeyRef:
-                  name: token_secret
+                  name: token-secret
                   key: token
-            - name: SPRING_RABBITMQ_HOST
+            - name: spring-rabbitmq-host
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: SPRING_RABBITMQ_HOST
-            - name: SPRING_RABBITMQ_PORT
+                  name: configmap-properties
+                  key: spring-rabbitmq-host
+            - name: spring-rabbitmq-port
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: SPRING_RABBITMQ_PORT
-            - name: SPRING_RABBITMQ_PASSWORD
+                  name: configmap-properties
+                  key: spring-rabbitmq-port
+            - name: spring-rabbitmq-password
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: SPRING_RABBITMQ_PASSWORD
-            - name: SPRING_RABBITMQ_USERNAME
+                  name: configmap-properties
+                  key: spring-rabbitmq-password
+            - name: spring-rabbitmq-username
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: SPRING_RABBITMQ_USERNAME
-            - name:  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+                  name: configmap-properties
+                  key: spring-rabbitmq-username
+            - name:  management-endpoints-web-exposure-include
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+                  name: configmap-properties
+                  key: management-endpoints-web-exposure-include
           ports:
             - containerPort: 8888
           resources:

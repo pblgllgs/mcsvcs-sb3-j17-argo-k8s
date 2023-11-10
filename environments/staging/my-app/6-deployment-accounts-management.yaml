@@ -24,13 +24,13 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: DISCOVERY_SERVICE_ENVIRONMENT
+                  name: configmap-properties
+                  key: discovery-service-environment
             - name: SPRING_CONFIG_IMPORT
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
-                  key: CONFIG_SERVER_URL
+                  name: configmap-properties
+                  key: config-server-url
           resources:
             requests:
               memory: "64Mi"

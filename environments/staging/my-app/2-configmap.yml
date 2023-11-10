@@ -1,19 +1,19 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: configmap_properties
+  name: configmap-properties
   namespace: staging
 data:
-  SPRING_RABBITMQ_HOST: rabbitmq
-  SPRING_RABBITMQ_PORT: "5672"
-  SPRING_RABBITMQ_PASSWORD: guest
-  SPRING_RABBITMQ_USERNAME: guest
-  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: "*"
+  spring-rabbitmq-host: rabbitmq
+  spring-rabbitmq-port: "5672"
+  spring-rabbitmq-password: guest
+  spring-rabbitmq-username: guest
+  management-endpoints-web-exposure-include: "*"
 
-  API_GATEWAY_ENVIRONMENT: docker
-  DISCOVERY_SERVICE_ENVIRONMENT: docker
-  ALBUMS_SERVICE_ENVIRONMENT: docker
-  ACCOUNTS_MANAGEMENT_SERVICE_ENVIRONMENT: docker
-  USERS_SERVICE_ENVIRONMENT: docker
+  api-gateway-environment: docker
+  discovery-service-environment: docker
+  albums-service-environment: docker
+  accounts-management-service-environment: docker
+  users-service-environment: docker
 
-  CONFIG_SERVER_URL: optional:configserver:http://config-server:8888
+  CONFIG-SERVER-URL: optional:configserver:http://config-server:8888
