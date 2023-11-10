@@ -63,6 +63,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  config-server-service
+  namespace: staging
 spec:
   selector:
     app:  config-server
