@@ -50,4 +50,5 @@ spec:
   type:  ClusterIP
   ports:
   - port:  5672
+    protocol: TCP
     targetPort: 32672
