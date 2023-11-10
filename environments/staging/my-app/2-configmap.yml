@@ -16,4 +16,4 @@ data:
   accounts-management-service-environment: docker
   users-service-environment: docker
 
-  CONFIG-SERVER-URL: optional:configserver:http://config-server:8888
+  config-server-url: optional:configserver:http://config-server:8888
