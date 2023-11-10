@@ -43,6 +43,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  users
+  namespace: staging
 spec:
   selector:
     app:  users

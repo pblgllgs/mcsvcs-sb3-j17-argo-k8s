@@ -43,6 +43,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  albums
+  namespace: staging
 spec:
   selector:
     app:  albums

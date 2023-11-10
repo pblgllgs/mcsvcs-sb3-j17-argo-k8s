@@ -43,6 +43,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  account-management-service
+  namespace: staging
 spec:
   selector:
     app:  account-management
