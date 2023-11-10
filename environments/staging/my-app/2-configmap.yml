@@ -4,7 +4,7 @@ metadata:
   name: configmap-properties
   namespace: staging
 data:
-  spring-rabbitmq-addresses: rabbitmq-service
+  spring-rabbitmq-addresses: rabbitmq-service:5672
   spring-rabbitmq-password: guest
   spring-rabbitmq-username: guest
   management-endpoints-web-exposure-include: "*"
