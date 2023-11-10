@@ -19,12 +19,12 @@ spec:
         - image: pblgllgs/config-server-j17-sb3:0.0.2
           name: config-server
           env:
-            - name: github-token
+            - name: GITHUB_TOKEN
               valueFrom:
                 secretKeyRef:
                   name: token-secret
                   key: token
-            - name: spring-rabbitmq-host
+            - name: SPRING_RABBITMQ_HOST
               valueFrom:
                 configMapKeyRef:
                   name: configmap-properties
@@ -34,17 +34,17 @@ spec:
                 configMapKeyRef:
                   name: configmap-properties
                   key: spring-rabbitmq-port
-            - name: spring-rabbitmq-password
+            - name: SPRING_RABBITMQ_PASSWORD
               valueFrom:
                 configMapKeyRef:
                   name: configmap-properties
                   key: spring-rabbitmq-password
-            - name: spring-rabbitmq-username
+            - name: SPRING_RABBITMQ_USERNAME
               valueFrom:
                 configMapKeyRef:
                   name: configmap-properties
                   key: spring-rabbitmq-username
-            - name:  management-endpoints-web-exposure-include
+            - name:  MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
               valueFrom:
                 configMapKeyRef:
                   name: configmap-properties
