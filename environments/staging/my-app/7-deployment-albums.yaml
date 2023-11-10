@@ -24,7 +24,7 @@ spec:
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
-                  name: configmap_properties
+                  name: configmap-properties
                   key: albums-service-environment
             - name: SPRING_CONFIG_IMPORT
               valueFrom:
