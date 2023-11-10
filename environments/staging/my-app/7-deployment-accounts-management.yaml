@@ -47,7 +47,7 @@ metadata:
 spec:
   selector:
     app:  account-ws
-  type:  NodePort
+  type:  ClusterIP
   ports:
   - port:  8082
     targetPort:  32002

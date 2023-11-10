@@ -16,4 +16,4 @@ data:
   accounts-management-service-environment: k8s
   users-service-environment: docker
 
-  config-server-url: optional:configserver:http://config-server:8888
+  config-server-url: optional:configserver:http://config-server
