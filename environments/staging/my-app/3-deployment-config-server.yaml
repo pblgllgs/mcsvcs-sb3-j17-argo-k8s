@@ -20,7 +20,7 @@ spec:
           name: config-server
           env:
             - name: GITHUB_TOKEN
-              value: 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
+              value: 123
             - name: SPRING_RABBITMQ_HOST
               value: rabbitmq
             - name: SPRING_RABBITMQ_PORT
