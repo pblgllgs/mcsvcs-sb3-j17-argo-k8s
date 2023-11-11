@@ -65,4 +65,5 @@ spec:
   type:  NodePort
   ports:
   - port:  8081
-    targetPort:  32001
+    protocol: TCP
+    targetPort:  8081
