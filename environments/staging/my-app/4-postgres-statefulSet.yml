@@ -9,7 +9,7 @@ metadata:
 spec:
   storageClassName: manual
   capacity:
-    storage: 2Gi
+    storage: 5Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
@@ -27,7 +27,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 2Gi
+      storage: 5Gi
 ---
 apiVersion: v1
 kind: ConfigMap
