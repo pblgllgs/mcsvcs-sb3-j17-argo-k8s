@@ -13,6 +13,6 @@ data:
   api-gateway-environment: docker
   albums-service-environment: k8s
   accounts-management-service-environment: k8s
-  users-service-environment: docker
+  users-service-environment: k8s
 
   config-server-url: optional:configserver:http://config-server:8888

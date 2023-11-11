@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-ws-deploy
+  namespace: staging
+  labels:
+    name: users-ws
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users-ws
+  template:
+    metadata:
+      labels:
+        app: users-ws
+    spec:
+      containers:
+        - image: pblgllgs/user-service-j17-sb3:0.0.3
+          name: users-ws
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: users-service-environment
+            - name: SPRING_CONFIG_IMPORT
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: config-server-url
+            - name: SPRING_RABBITMQ_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: spring-rabbitmq-host
+            - name: SPRING_RABBITMQ_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: spring-rabbitmq-password
+            - name: SPRING_RABBITMQ_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: spring-rabbitmq-username
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  users-ws
+  namespace: staging
+spec:
+  selector:
+    app:  users-ws
+  type:  ClusterIP
+  ports:
+  - port:  8083
+    protocol: TCP
+    targetPort:  8083
