@@ -31,6 +31,7 @@ spec:
                   key: spring-rabbitmq-password
           ports:
             - containerPort: 5672
+            - containerPort: 15672
           resources:
             requests:
               memory: "128Mi"
@@ -42,13 +43,19 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  rabbitmq-service
-  namespace: staging
+  name: rabbitmq-service
 spec:
-  selector:
-    app:  rabbitmq
-  type:  ClusterIP
+  type: ClusterIP
   ports:
-  - port:  5672
-    protocol: TCP
-    targetPort: 32672
+   - name: http
+     protocol: TCP
+     port: 15672
+     targetPort: 15672
+     nodePort: 31672
+   - name: amqp
+     protocol: TCP
+     port: 5672
+     targetPort: 5672
+     nodePort: 30672
+  selector:
+    app: rabbitmq

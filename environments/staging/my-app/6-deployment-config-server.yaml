@@ -65,4 +65,5 @@ spec:
   type:  ClusterIP
   ports:
   - port:  8888
-    targetPort: 32888 
+    protocol: TCP
+    targetPort: 8888 
