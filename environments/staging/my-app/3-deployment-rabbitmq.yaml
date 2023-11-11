@@ -46,6 +46,8 @@ metadata:
   name: rabbitmq-service
   namespace: staging
 spec:
+  selector:
+    app: rabbitmq
   type: ClusterIP
   ports:
    - name: http
@@ -58,5 +60,3 @@ spec:
      port: 5672
      targetPort: 5672
      nodePort: 30672
-  selector:
-    app: rabbitmq
