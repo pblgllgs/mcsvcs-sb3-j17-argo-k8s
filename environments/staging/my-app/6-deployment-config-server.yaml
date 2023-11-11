@@ -29,11 +29,6 @@ spec:
                 configMapKeyRef:
                   name: configmap-properties
                   key: spring-rabbitmq-host
-            - name: SPRING_RABBITMQ_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: configmap-properties
-                  key: spring-rabbitmq-port
             - name: SPRING_RABBITMQ_PASSWORD
               valueFrom:
                 configMapKeyRef:
