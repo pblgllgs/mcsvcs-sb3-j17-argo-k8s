@@ -16,7 +16,7 @@ spec:
         app: config-server
     spec:
       containers:
-        - image: pblgllgs/config-server-j17-sb3:0.0.3
+        - image: pblgllgs/config-server-j17-sb3:0.0.4
           name: config-server
           env:
             - name: GITHUB_TOKEN
@@ -44,6 +44,21 @@ spec:
                 configMapKeyRef:
                   name: configmap-properties
                   key: management-endpoints-web-exposure-include
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: cloud-kubernetes-secrets-enable-api
+            - name: SPRING_CLOUD_KUBERNETES_DISCOVERY_ALL_NAMESPACES
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: cloud-kubernetes-discovery-all-namespaces
+            - name:  SPRING_CLOUD_KUBERNETES_LOADBALANCER_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: cloud-kubernetes-loadbalancer-mode
           ports:
             - containerPort: 8888
           resources:

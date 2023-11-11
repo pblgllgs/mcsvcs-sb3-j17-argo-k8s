@@ -16,7 +16,7 @@ spec:
         app: users-ws
     spec:
       containers:
-        - image: pblgllgs/user-service-j17-sb3:0.0.3
+        - image: pblgllgs/user-service-j17-sb3:0.0.4
           name: users-ws
           imagePullPolicy: Always
           ports:
@@ -52,6 +52,21 @@ spec:
                 configMapKeyRef:
                   name: configmap-properties
                   key: spring-rabbitmq-username
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: cloud-kubernetes-secrets-enable-api
+            - name: SPRING_CLOUD_KUBERNETES_DISCOVERY_ALL_NAMESPACES
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: cloud-kubernetes-discovery-all-namespaces
+            - name:  SPRING_CLOUD_KUBERNETES_LOADBALANCER_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: cloud-kubernetes-loadbalancer-mode
           resources:
             requests:
               memory: "128Mi"
