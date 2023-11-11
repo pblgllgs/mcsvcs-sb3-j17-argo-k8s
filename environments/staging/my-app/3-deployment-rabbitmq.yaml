@@ -44,6 +44,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: rabbitmq-service
+  namespace: staging
 spec:
   type: ClusterIP
   ports:
