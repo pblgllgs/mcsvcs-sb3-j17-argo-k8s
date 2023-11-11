@@ -35,9 +35,8 @@ metadata:
   name: mysql-config
   namespace: staging
 data:
-  MYSQL_ROOT_PASSWORD: root
-  MYSQL_USER: root
-  MYSQL_PASSWORD: password
+  MYSQL_ROOT_USERNAME: root
+  MYSQL_ROOT_PASSWORD: password
   MYSQL_DATABASE: db_users
 ---
 apiVersion: apps/v1
