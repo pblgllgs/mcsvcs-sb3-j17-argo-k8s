@@ -21,6 +21,11 @@ spec:
           ports:
             - containerPort: 8083
           env:
+            - name: CLIENTS_ALBUMS_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-properties
+                  key: client-albums-url
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
