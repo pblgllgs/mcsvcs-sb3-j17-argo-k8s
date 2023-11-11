@@ -14,6 +14,6 @@ data:
   albums-service-environment: k8s
   accounts-management-service-environment: k8s
   users-service-environment: k8s
-  client-albums-url: http://albums-ws
+  clients-albums-url: http://albums-ws
 
   config-server-url: optional:configserver:http://config-server:8888

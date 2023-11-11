@@ -26,7 +26,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: configmap-properties
-                  key: client-albums-url
+                  key: clients-albums-url
             - name: SPRING_PROFILES_ACTIVE
               valueFrom:
                 configMapKeyRef:
