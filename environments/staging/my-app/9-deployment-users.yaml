@@ -18,6 +18,7 @@ spec:
       containers:
         - image: pblgllgs/user-service-j17-sb3:0.0.3
           name: users-ws
+          imagePullPolicy: Always
           ports:
             - containerPort: 8083
           env:
