@@ -18,7 +18,7 @@ data:
       jpa:
         database-platform: org.hibernate.dialect.MySQLDialect
         hibernate:
-          ddl-auto: update
+          ddl-auto: validate
         properties:
           hibernate:
             show_sql: true
