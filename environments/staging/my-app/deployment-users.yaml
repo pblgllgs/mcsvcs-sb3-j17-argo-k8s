@@ -17,7 +17,7 @@ spec:
     spec:
       serviceAccountName: spring-cloud-kubernetes
       containers:
-        - image: pblgllgs/user-service-j17-sb3:0.0.5
+        - image: pblgllgs/user-service-j17-sb3:0.0.6
           name: users
           imagePullPolicy: Always
           ports:
