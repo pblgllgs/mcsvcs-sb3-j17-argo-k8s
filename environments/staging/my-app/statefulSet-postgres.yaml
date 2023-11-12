@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pc-volume
+  name: postgres-pc-volume
   namespace: default
   labels:
     type: local
-    app: mysql
+    app: postgres
 spec:
   storageClassName: manual
   capacity:
@@ -14,12 +14,12 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: /mnt/mysql/data
+    path: /mnt/postgres/data
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pc-volume-claim
+  name: postgres-pc-volume-claim
   namespace: default
 spec:
   storageClassName: manual
@@ -32,42 +32,43 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mysql
+  name: postgres
   namespace: default
 data:
-  MYSQL_ROOT_USERNAME: root
-  MYSQL_ROOT_PASSWORD: password
-  MYSQL_DATABASE: db_users
+  POSTGRES_DB: db_albums
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: password
 ---
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: mysql
+  name: postgres
   namespace: default
 spec:
-  serviceName: mysql
+  serviceName: postgres
   selector:
     matchLabels:
-      app: mysql
+      app: postgres
   template:
     metadata:
       labels:
-        app: mysql
+        app: postgres
     spec:
+      serviceAccountName: spring-cloud-kubernetes
       volumes:
-        - name: mysql
+        - name: postgres
           persistentVolumeClaim:
-              claimName: mysql-pc-volume-claim
+              claimName: postgres-pc-volume-claim
       containers:
-        - name: mysql
-          image: mysql:8.0.32
+        - name: postgres
+          image: postgres:14.3
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - mountPath: /var/lib/mysql
-              name: mysql
+            - mountPath: /var/lib/postgresql/data
+              name: postgres
           envFrom:
             - configMapRef:
-                name: mysql
+                name: postgres
           resources:
             requests:
               cpu: 100m
@@ -80,12 +81,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql
+  name: postgres
   namespace: default
 spec:
   selector:
-    app: mysql
+    app: postgres
   ports:
-    - port: 3306
-      targetPort: 3306
+    - port: 5432
+      targetPort: 5432
   type: ClusterIP

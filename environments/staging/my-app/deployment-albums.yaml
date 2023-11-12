@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: api-gateway
+  name: albums
   namespace: default
   labels:
-    name: api-gateway
+    name: albums
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: api-gateway
+      app: albums
   template:
     metadata:
       labels:
-        app: api-gateway
+        app: albums
     spec:
+      serviceAccountName: spring-cloud-kubernetes
       containers:
-        - image: pblgllgs/api-gateway-j17-sb3:0.0.5
-          name: api-gateway
-          imagePullPolicy: Always
+        - image: pblgllgs/album-service-j17-sb3:0.0.5
+          name: albums
           ports:
             - containerPort: 8080
           env:
@@ -37,12 +37,12 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  api-gateway
+  name:  albums
   namespace: default
 spec:
   type:  ClusterIP
   selector:
-    app:  api-gateway
+    app:  albums
   ports:
   - port:  8080
     protocol: TCP

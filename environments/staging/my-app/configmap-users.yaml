@@ -8,7 +8,7 @@ data:
 
     clients:
       albums:
-        uel: http://albums
+        url: http://albums
     spring:
       datasource:
         url: jdbc:mysql://mysql:3306/db_users

@@ -1,23 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: accounts
+  name: api-gateway
   namespace: default
   labels:
-    name: accounts
+    name: api-gateway
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: accounts
+      app: api-gateway
   template:
     metadata:
       labels:
-        app: accounts
+        app: api-gateway
     spec:
+      serviceAccountName: spring-cloud-kubernetes
       containers:
-        - image: pblgllgs/account-management-service-j17-sb3:0.0.5
-          name: accounts
+        - image: pblgllgs/api-gateway-j17-sb3:0.0.5
+          name: api-gateway
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
@@ -36,12 +38,12 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name:  accounts
+  name:  api-gateway
   namespace: default
 spec:
   type:  ClusterIP
   selector:
-    app:  accounts
+    app:  api-gateway
   ports:
   - port:  8080
     protocol: TCP

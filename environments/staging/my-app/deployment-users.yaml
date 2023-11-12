@@ -1,23 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: albums
+  name: users
   namespace: default
   labels:
-    name: albums
+    name: users
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: albums
+      app: users
   template:
     metadata:
       labels:
-        app: albums
+        app: users
     spec:
+      serviceAccountName: spring-cloud-kubernetes
       containers:
-        - image: pblgllgs/album-service-j17-sb3:0.0.5
-          name: albums
+        - image: pblgllgs/user-service-j17-sb3:0.0.5
+          name: users
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
@@ -25,23 +27,25 @@ spec:
               value: "true"
             - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI
               value: "true"
+            - name: SPRING_MAIN_ALLOWBEANDEFINITIONOVERRIDING
+              value: "true"
           resources:
             requests:
-              memory: "128Mi"
+              memory: "256Mi"
               cpu: "250m"
             limits:
-              memory: "256Mi"
+              memory: "512Mi"
               cpu: "500m"
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name:  albums
+  name:  users
   namespace: default
 spec:
   type:  ClusterIP
   selector:
-    app:  albums
+    app:  users
   ports:
   - port:  8080
     protocol: TCP
