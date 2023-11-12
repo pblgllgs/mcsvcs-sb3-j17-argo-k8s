@@ -4,5 +4,5 @@ metadata:
   name: accounts
   namespace: staging
 data:
-  application.properties: |-
+  application.yml: |-
     message: hola
