@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: api-gateway
-  namespace: staging
   labels:
     name: api-gateway
 spec:
@@ -38,7 +37,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  api-gateway
-  namespace: staging
 spec:
   type:  ClusterIP
   selector:

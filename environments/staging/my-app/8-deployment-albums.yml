@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: albums
-  namespace: staging
   labels:
     name: albums
 spec:
@@ -37,7 +36,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  albums
-  namespace: staging
 spec:
   type:  ClusterIP
   selector:

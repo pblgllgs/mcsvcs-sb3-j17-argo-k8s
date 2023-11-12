@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: users
-  namespace: staging
   labels:
     name: users
 spec:
@@ -38,7 +37,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  users
-  namespace: staging
 spec:
   type:  ClusterIP
   selector:

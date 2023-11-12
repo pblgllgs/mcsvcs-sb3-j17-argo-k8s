@@ -2,7 +2,6 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: mysql-pc-volume
-  namespace: staging
   labels:
     type: local
     app: mysql
@@ -20,7 +19,6 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: mysql-pc-volume-claim
-  namespace: staging
 spec:
   storageClassName: manual
   accessModes:
@@ -33,7 +31,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mysql
-  namespace: staging
 data:
   MYSQL_ROOT_USERNAME: root
   MYSQL_ROOT_PASSWORD: password
@@ -43,7 +40,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mysql
-  namespace: staging
 spec:
   serviceName: mysql
   selector:
@@ -81,7 +77,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  namespace: staging
 spec:
   selector:
     app: mysql
