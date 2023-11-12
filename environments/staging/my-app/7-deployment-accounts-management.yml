@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: accounts
+  namespace: default
   labels:
     name: accounts
 spec:
@@ -36,6 +37,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name:  accounts
+  namespace: default
 spec:
   type:  ClusterIP
   selector:
