@@ -5,3 +5,5 @@ metadata:
   namespace: staging
 data:
   application.yml: |-
+
+    message: "hola"
