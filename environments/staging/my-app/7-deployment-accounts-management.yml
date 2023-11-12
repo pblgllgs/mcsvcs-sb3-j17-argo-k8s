@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts
+  namespace: staging
+  labels:
+    name: accounts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: accounts
+  template:
+    metadata:
+      labels:
+        app: accounts
+    spec:
+      containers:
+        - image: pblgllgs/account-management-service-j17-sb3:0.0.4
+          name: accounts
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI
+              value: "true"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  accounts
+  namespace: staging
+spec:
+  type:  ClusterIP
+  selector:
+    app:  accounts
+  ports:
+  - port:  8080
+    protocol: TCP

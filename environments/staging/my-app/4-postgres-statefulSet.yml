@@ -32,7 +32,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: postgres-config
+  name: postgres
   namespace: staging
 data:
   POSTGRES_DB: db_albums
@@ -67,7 +67,7 @@ spec:
               name: postgres
           envFrom:
             - configMapRef:
-                name: postgres-config
+                name: postgres
           resources:
             requests:
               cpu: 100m

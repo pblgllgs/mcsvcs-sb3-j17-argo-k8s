@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/pblgllgs/mcsvcs-sb3-j17-argo-k8s
-    targetRevision: cloud-kubernetes
+    targetRevision: fabric8
     path: environments/staging/my-app
   destination:
     server: https://kubernetes.default.svc

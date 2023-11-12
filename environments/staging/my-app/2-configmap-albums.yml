@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-properties
+  namespace: staging
+data:
+  application.yml: |-
+
+    spring:
+      datasource:
+        url: jdbc:postgresql://postgres:5432/db_albums
+        driver-class-name: org.postgresql.Driver
+      jpa:
+        properties:
+          hibernate:
+            dialect: org.hibernate.dialect.PostgreSQLDialect
+            format_sql: 'true'
+            show_sql: 'true'
+        hibernate:
+          ddl-auto: update
+        database: postgresql
+    token:
+      expiration-time: 3600000
+      secret: 7t30WYh7K8A2RQnydbXhNV2150w9ukK30x14awhO3b5253mh1mK4rM2Z9gZksoT3t4NUdC
+    authorization:
+      token:
+        header:
+          name: Authorization
+          prefix: Bearer

@@ -32,7 +32,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mysql-config
+  name: mysql
   namespace: staging
 data:
   MYSQL_ROOT_USERNAME: root
@@ -67,7 +67,7 @@ spec:
               name: mysql
           envFrom:
             - configMapRef:
-                name: mysql-config
+                name: mysql
           resources:
             requests:
               cpu: 100m

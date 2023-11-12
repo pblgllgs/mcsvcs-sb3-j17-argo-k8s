@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+  namespace: staging
+  labels:
+    name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - image: pblgllgs/api-gateway-j17-sb3:0.0.4
+          name: api-gateway
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+              value: "true"
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLEAPI
+              value: "true"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  api-gateway
+  namespace: staging
+spec:
+  type:  ClusterIP
+  selector:
+    app:  api-gateway
+  ports:
+  - port:  8080
+    protocol: TCP
