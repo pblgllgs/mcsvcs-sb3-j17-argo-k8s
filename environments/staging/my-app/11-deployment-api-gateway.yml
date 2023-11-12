@@ -16,7 +16,7 @@ spec:
         app: api-gateway
     spec:
       containers:
-        - image: pblgllgs/api-gateway-j17-sb3:0.0.4
+        - image: pblgllgs/api-gateway-j17-sb3:0.0.5
           name: api-gateway
           imagePullPolicy: Always
           ports:

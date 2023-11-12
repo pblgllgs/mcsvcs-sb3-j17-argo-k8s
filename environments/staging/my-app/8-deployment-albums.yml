@@ -16,7 +16,7 @@ spec:
         app: albums
     spec:
       containers:
-        - image: pblgllgs/album-service-j17-sb3:0.0.4
+        - image: pblgllgs/album-service-j17-sb3:0.0.5
           name: albums
           ports:
             - containerPort: 8080

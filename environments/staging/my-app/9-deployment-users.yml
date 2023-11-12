@@ -16,7 +16,7 @@ spec:
         app: users
     spec:
       containers:
-        - image: pblgllgs/user-service-j17-sb3:0.0.4
+        - image: pblgllgs/user-service-j17-sb3:0.0.5
           name: users
           imagePullPolicy: Always
           ports:
