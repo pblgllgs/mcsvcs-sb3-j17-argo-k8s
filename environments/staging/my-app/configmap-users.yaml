@@ -6,6 +6,8 @@ metadata:
 data:
   application.yml: |-
 
+    message:
+      profile: kubernetes-cluster
     clients:
       albums:
         url: http://albums:8080

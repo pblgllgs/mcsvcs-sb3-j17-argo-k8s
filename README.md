@@ -34,11 +34,10 @@ kubectl delete -f application.yaml
 
 ## KUBESEAL SECRET
 
-Replace 1-secrets.yml with the new file 1-sealed-secrets.yml
+Generate secrets
 
 ```bash
-cd environments/staging/my-app
-kubeseal --controller-name sealed-secrets -o yaml -n staging  <1-secrets.yml> 1-sealed-secrets.yml
+./sealed-secrets.sh
 ```
 
 ## DELETE OLD FILES IN MINIKUBE
@@ -48,4 +47,24 @@ minikube ssh
 cd /mnt/data
 sudo su
 rm -drf *
+```
+
+## EXPOSE ENDPOINTS
+
+### API-GATEWAY
+
+<http://localhost:8888>
+
+```bash
+kubectl port-forward svc/api-gateway -n default 8888:8080
+```
+
+## OTHER ENDPOINTS
+
+```bash
+kubectl port-forward svc/api-gateway -n default 32080:8080
+kubectl port-forward svc/albums -n default 32002:8080
+kubectl port-forward svc/mysql -n default 3306:3306
+kubectl port-forward svc/zipkin -n default 9411:9411
+kubectl port-forward svc/postgres -n default 5432:5432
 ```
