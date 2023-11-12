@@ -19,6 +19,7 @@ spec:
       containers:
         - image: pblgllgs/album-service-j17-sb3:0.0.6
           name: albums
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
