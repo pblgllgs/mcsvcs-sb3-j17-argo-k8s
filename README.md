@@ -24,6 +24,15 @@ kubectl port-forward svc/argocd-server -n argocd 8080:80
 argocd admin initial-password -n argocd
 ```
 
+## CREDENTIALS ARGOCD
+
+USERNAME: admin, run the next command to get the password
+
+```BASH
+kubectl port-forward svc/argocd-server -n argocd 8080:80
+argocd admin initial-password -n argocd
+```
+
 ## APP
 
 ```BASH
@@ -34,10 +43,24 @@ kubectl delete -f application.yaml
 
 ## KUBESEAL SECRET
 
-Generate secrets
+Generate secrets, this script remove older version of secrets files and generate news.
 
 ```bash
 ./sealed-secrets.sh
+```
+
+```bash
+#!/bin/bash
+
+# exit when any command fails
+set -e
+
+rm environments/staging/my-app/secret-albums.yaml
+rm environments/staging/my-app/secret-users.yaml
+
+kubeseal --controller-name sealed-secrets -o yaml -n default  < ignore/secrets-users.yml > environments/staging/my-app/secret-users.yaml
+kubeseal --controller-name sealed-secrets -o yaml -n default  < ignore/secrets-albums.yml > environments/staging/my-app/secret-albums.yaml
+
 ```
 
 ## DELETE OLD FILES IN MINIKUBE
@@ -56,13 +79,12 @@ rm -drf *
 <http://localhost:8888>
 
 ```bash
-kubectl port-forward svc/api-gateway -n default 8888:8080
+kubectl port-forward svc/api-gateway -n default 32080:8080
 ```
 
 ## OTHER ENDPOINTS
 
 ```bash
-kubectl port-forward svc/api-gateway -n default 32080:8080
 kubectl port-forward svc/albums -n default 32002:8080
 kubectl port-forward svc/mysql -n default 3306:3306
 kubectl port-forward svc/zipkin -n default 9411:9411

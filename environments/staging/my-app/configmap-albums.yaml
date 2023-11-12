@@ -16,8 +16,13 @@ data:
             format_sql: 'true'
             show_sql: 'true'
         hibernate:
-          ddl-auto: update
+          ddl-auto: validate
         database: postgresql
+      flyway:
+        enabled: true
+        baseline-on-migrate: true
+        baseline-description: "init"
+        baseline-version: 0
     token:
       expiration-time: 3600000
       secret: 7t30WYh7K8A2RQnydbXhNV2150w9ukK30x14awhO3b5253mh1mK4rM2Z9gZksoT3t4NUdC
