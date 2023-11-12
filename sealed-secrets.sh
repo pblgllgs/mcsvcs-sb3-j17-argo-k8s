@@ -3,7 +3,8 @@
 # exit when any command fails
 set -e
 
-rm environments/staging/my-app/1-sealed-*
+rm environments/staging/my-app/users/secret.yml
+rm environments/staging/my-app/albums/secret.yml
 
-kubeseal --controller-name sealed-secrets -o yaml -n default  < ignore/1-secrets-albums.yml > environments/staging/my-app/1-sealed-secrets-albums.yml
-kubeseal --controller-name sealed-secrets -o yaml -n default  < ignore/1-secrets-users.yml > environments/staging/my-app/1-sealed-secrets-users.yml
+kubeseal --controller-name sealed-secrets -o yaml -n default  < ignore/secrets-albums.yml > environments/staging/my-app/users/secret.yml
+kubeseal --controller-name sealed-secrets -o yaml -n default  < ignore/secrets-users.yml > environments/staging/my-app/albums/secret.yml
