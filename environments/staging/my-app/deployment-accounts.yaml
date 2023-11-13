@@ -19,6 +19,7 @@ spec:
       containers:
         - image: pblgllgs/account-management-service-j17-sb3:0.0.5
           name: accounts
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
