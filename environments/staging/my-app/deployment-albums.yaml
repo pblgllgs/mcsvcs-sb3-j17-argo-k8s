@@ -41,10 +41,11 @@ metadata:
   name:  albums
   namespace: default
 spec:
-  type:  ClusterIP
+  type:  NodePort
   selector:
     app:  albums
   ports:
-  - port:  8080
+  - nodePort: 32002
+    port:  8080
     protocol: TCP
     targetPort: 8080
