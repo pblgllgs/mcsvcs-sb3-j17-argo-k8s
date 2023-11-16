@@ -16,6 +16,18 @@ spec:
         app: users
     spec:
       serviceAccountName: spring-cloud-kubernetes
+      initContainers:
+        - name: helper
+          image: busybox:1.31
+          command:
+            - "/bin/sh"
+            - "-c"
+            - |
+              until nc -zv mysql 3306
+              do
+                echo "Esperando a que la DB esté disponible..."
+                sleep 2
+              done
       containers:
         - image: pblgllgs/user-service-j17-sb3:0.0.6
           name: users
