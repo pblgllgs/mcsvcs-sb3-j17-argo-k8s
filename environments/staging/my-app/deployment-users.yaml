@@ -29,7 +29,7 @@ spec:
                 sleep 2
               done
       containers:
-        - image: pblgllgs/user-service-j17-sb3:0.0.6
+        - image: pblgllgs/user-service-j17-sb3:0.0.5
           name: users
           imagePullPolicy: Always
           ports:
